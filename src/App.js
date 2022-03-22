@@ -1,28 +1,39 @@
-import { useRef, useState } from 'react';
+import React, {useContext, createContext} from 'react'
 
-function Stopwatch() {
-  const timerIdRef = useRef(0);
-  const [count, setCount] = useState(0);
-  const startHandler = () => {
-    if (timerIdRef.current) { 
-      return;
-     }
-    timerIdRef.current = setInterval(() => setCount(c => c+1), 100);
-  };
-  const stopHandler = () => {
-    clearInterval(timerIdRef.current);
-    timerIdRef.current = 0;
+const themes = {
+    light: {
+      foreground: "#000000",
+      background: "#eeeeee"
+    },
+    dark: {
+      foreground: "#ffffff",
+      background: "#222222"
+    }
   };
 
+
+const ThemeContext = createContext(themes.light)
+
+const useContext1 = () => {
   return (
-    <div>
-      <div>Timer: {count} s</div>
-      <div>
-        <button onClick={startHandler}>Start</button>
-        <button onClick={stopHandler}>Stop</button>
-        <p>{timerIdRef.current}</p>
-      </div>
-    </div>
-  );
+    <ThemeContext.Provider value={themes.dark}>
+        <Toolbar />
+    </ThemeContext.Provider>
+  )
 }
-export default Stopwatch;
+
+function Toolbar(props) {
+    return (
+      <div>
+        <ThemedButton />
+      </div>
+    );
+
+    function ThemedButton(props) {
+        const theme = useContext(ThemeContext);
+        return <button style={{background: theme.background, color: theme.foreground}}>Hover me!</button>;
+    }
+}
+
+
+export default useContext1
