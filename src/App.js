@@ -1,39 +1,37 @@
-import React, {useContext, createContext} from 'react'
+import * as React from 'react';
 
-const themes = {
-    light: {
-      foreground: "#000000",
-      background: "#eeeeee"
-    },
-    dark: {
-      foreground: "#ffffff",
-      background: "#222222"
-    }
-  };
+const App = () => (
+  <div>
+    <h1>US Dollar to Euro:</h1>
+    <Amount>{(amount) => <Euro amount={amount} />}</Amount>
 
+    <h1>US Dollar to Pound:</h1>
+    <Amount>{(amount) => <Pound amount={amount} />}</Amount>
+  </div>
+);
 
-const ThemeContext = createContext(themes.light)
+const Amount = ({ children }) => {
+  const [amount, setAmount] = React.useState(0);
+  const handleIncrement = () => setAmount(amount + 1);
+  const handleDecrement = () => setAmount(amount - 1);
 
-const useContext1 = () => {
   return (
-    <ThemeContext.Provider value={themes.dark}>
-        <Toolbar />
-    </ThemeContext.Provider>
-  )
-}
+    <div>
+      <button type="button" onClick={handleIncrement}>
+        +
+      </button>
+      <button type="button" onClick={handleDecrement}>
+        -
+      </button>
 
-function Toolbar(props) {
-    return (
-      <div>
-        <ThemedButton />
-      </div>
-    );
+      <p>US Dollar: {amount}</p>
+      {children(amount)}
+    </div>
+  );
+};
 
-    function ThemedButton(props) {
-        const theme = useContext(ThemeContext);
-        return <button style={{background: theme.background, color: theme.foreground}}>Hover me!</button>;
-    }
-}
+const Euro = ({ amount }) => <p>Euro: {amount * 0.86}</p>;
 
+const Pound = ({ amount }) => <p>Pound: {amount * 0.76}</p>;
 
-export default useContext1
+export default App;
