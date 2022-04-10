@@ -2,10 +2,10 @@ import * as React from 'react';
 
 const App = () => (
   <div>
-    <h1>US Dollar to Euro:</h1>
+    <h1>US Dollar ==&gt; Euro:</h1>
     <Amount>{(amount) => <Euro amount={amount} />}</Amount>
 
-    <h1>US Dollar to Pound:</h1>
+    <h1>US Dollar ==&gt; Pound:</h1>
     <Amount>{(amount) => <Pound amount={amount} />}</Amount>
   </div>
 );
