@@ -4,14 +4,20 @@ function Stopwatch() {
   const timerIdRef = useRef(0);
   const [count, setCount] = useState(0);
   const startHandler = () => {
-    if (timerIdRef.current) { 
+    if (timerIdRef.current) {
       return;
-     }
-    timerIdRef.current = setInterval(() => setCount(c => c+1), 100);
+    }
+    timerIdRef.current = setInterval(() => setCount(c => c + 1), 100);
   };
   const stopHandler = () => {
     clearInterval(timerIdRef.current);
     timerIdRef.current = 0;
+  };
+
+  const resetHandler = () => {
+    clearInterval(timerIdRef.current);
+    timerIdRef.current = 0;
+    setCount(c => c = 0)
   };
 
   return (
@@ -20,7 +26,7 @@ function Stopwatch() {
       <div>
         <button onClick={startHandler}>Start</button>
         <button onClick={stopHandler}>Stop</button>
-        <p>{timerIdRef.current}</p>
+        <button onClick={resetHandler}>Reset</button>
       </div>
     </div>
   );

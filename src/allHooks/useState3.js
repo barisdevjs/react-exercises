@@ -4,7 +4,6 @@ import { useState} from 'react';
 const App = () => {
   const [isShow, setShow] = useState(true);
   const [greeting, setGreeting] = useState('Hello');
-
   const handleClick = (e) => {
     setGreeting(e.target.value);
   }

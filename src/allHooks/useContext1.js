@@ -22,14 +22,14 @@ const useContext1 = () => {
   )
 }
 
-function Toolbar(props) {
+function Toolbar() {
     return (
       <div>
         <ThemedButton />
       </div>
     );
 
-    function ThemedButton(props) {
+    function ThemedButton() {
         const theme = useContext(ThemeContext);
         return <button style={{background: theme.background, color: theme.foreground}}>Hover me!</button>;
     }

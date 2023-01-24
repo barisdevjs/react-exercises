@@ -9,7 +9,7 @@ function reducer(state, action) {
     case 'decrement':
       return {count: state.count - action.payload};
     default:
-      throw new Error();
+      throw new Error(); // for alternative  ==> return state 
   }
 }
 
@@ -18,7 +18,7 @@ function Counter() {
   return (
     <>
       Count: {state.count}
-      <button onClick={() => dispatch({type: 'decrement', payload: 3})}>-</button>
+      <button onClick={() => dispatch({type: 'decrement', payload:3})}>-</button>
       <button onClick={() => dispatch({type: 'increment', payload:9})}>+</button>
     </>
   );
