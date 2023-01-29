@@ -1,22 +1,14 @@
-import { forwardRef, useRef } from 'react';
-
-const MyInput = forwardRef((props, ref) => {
-  return <input {...props} ref={ref} />;
-});
+import { useId } from 'react';
 
 export default function Form() {
-  const inputRef = useRef(null);
-
-  function handleClick() {
-    inputRef.current.focus();
-  }
-
+  const id = useId();
   return (
-    <>
-      <MyInput ref={inputRef} />
-      <button onClick={handleClick}>
-        Focus the input
-      </button>
-    </>
+    <form>
+      <label htmlFor={id + '-firstName'}>First Name:</label>
+      <input id={id + '-firstName'} type="text" />
+      <hr />
+      <label htmlFor={id + '-lastName'}>Last Name:</label>
+      <input id={id + '-lastName'} type="text" />
+    </form>
   );
 }
