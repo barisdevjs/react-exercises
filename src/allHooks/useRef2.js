@@ -1,8 +1,17 @@
-import { useRef, useState } from 'react';
+import { useRef, useState,useEffect } from 'react';
+import * as React from 'react'
 
-function Stopwatch() {
+function App() {
   const timerIdRef = useRef(0);
   const [count, setCount] = useState(0);
+  const [targetCount, setTargetCount] = useState(0);
+
+  useEffect(() => {
+    if (count === targetCount) {
+      stopHandler();
+    }
+  }, [count, targetCount]);
+
   const startHandler = () => {
     if (timerIdRef.current) {
       return;
@@ -20,6 +29,11 @@ function Stopwatch() {
     setCount(c => c = 0)
   };
 
+  const countFive = (number) => {
+    setTargetCount(number);
+    startHandler();
+  }
+
   return (
     <div>
       <div>Timer: {count} s</div>
@@ -27,8 +41,10 @@ function Stopwatch() {
         <button onClick={startHandler}>Start</button>
         <button onClick={stopHandler}>Stop</button>
         <button onClick={resetHandler}>Reset</button>
+        <button onClick={() => countFive(5)}>5</button>
+
       </div>
     </div>
   );
 }
-export default Stopwatch;
+export default App;
