@@ -8,13 +8,8 @@ function App() {
   const [targetCount, setTargetCount] = useState<number>(0);
 
   useEffect(() => {
-    if (count === targetCount) {
-      stopHandler();
-    }
+    if (count === targetCount) { stopHandler() };
 
-    if (count === 0) {
-      stopHandler();
-    }
   }, [count, targetCount]);
 
   const startHandler = () => {
@@ -35,15 +30,19 @@ function App() {
     setCount((c) => (c = 0));
   };
 
-  const countToNum = (number: number) => {
+   const countToNum = (number: number) => {
+    resetHandler()
     setTargetCount(number);
-    startHandler();
+    setCount(0)
+    timerIdRef.current = setInterval(() => setCount((c) => c + 1), 100);
   };
 
   const countFromNumber = (number: number) => {
+    resetHandler()
     setCount(number);
     setTargetCount(0);
     timerIdRef.current = setInterval(() => setCount((c) => c - 1), 100);
+
   };
 
   return (
