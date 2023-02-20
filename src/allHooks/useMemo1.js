@@ -1,8 +1,7 @@
 import React, {useState, useMemo} from 'react'
 
 const App = () => {
-
-
+  
   const [number, setNumber] = useState(0)
   const [dark, setDark] = useState(false)
   const doubleNumber = useMemo(() => {
@@ -15,8 +14,6 @@ const App = () => {
     color: dark ? 'white' : 'black',
     fontFamily: 'Arial'
   }
-
-
 
   return (
     <>
