@@ -3,9 +3,9 @@ import * as React from 'react';
 import './style.css';
 
 function App() {
-  const timerIdRef = useRef<number>(0);
-  const [count, setCount] = useState<number>(0);
-  const [targetCount, setTargetCount] = useState<number>(0);
+  const timerIdRef = useRef(0);
+  const [count, setCount] = useState(0);
+  const [targetCount, setTargetCount] = useState(0);
 
   useEffect(() => {
     if (count === targetCount) { stopHandler() };
@@ -30,14 +30,14 @@ function App() {
     setCount((c) => (c = 0));
   };
 
-   const countToNum = (number: number) => {
+   const countToNum = (number ) => {
     resetHandler()
     setTargetCount(number);
     setCount(0)
     timerIdRef.current = setInterval(() => setCount((c) => c + 1), 100);
   };
 
-  const countFromNumber = (number: number) => {
+  const countFromNumber = (number ) => {
     resetHandler()
     setCount(number);
     setTargetCount(0);
