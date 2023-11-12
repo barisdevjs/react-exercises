@@ -3,6 +3,7 @@ import React, { useRef, useState } from "react";
 export default function App() {
   const [name, setName] = useState('');
   const inputRef = useRef()
+  console.log(name) // it will not trigger the useState
 
   function focus() {
     inputRef.current.focus();

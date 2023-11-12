@@ -33,18 +33,21 @@ export default function CatFriends() {
             <img
               src="https://placekitten.com/g/200/200"
               alt="Tom"
+              style={{height:"100vh"}}
             />
           </li>
           <li>
             <img
               src="https://placekitten.com/g/300/200"
               alt="Maru"
+              style={{height:"100vh"}}
             />
           </li>
           <li>
             <img
               src="https://placekitten.com/g/250/200"
               alt="Jellylorum"
+              style={{height:"100vh"}}
             />
           </li>
         </ul>

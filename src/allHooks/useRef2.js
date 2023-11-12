@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import * as React from 'react';
-import './style.css';
+import './App.css';
 
 function App() {
   const timerIdRef = useRef(0);
@@ -52,8 +52,8 @@ function App() {
         <button onClick={startHandler}>Start</button>
         <button onClick={stopHandler}>Stop</button>
         <button onClick={resetHandler}>Reset</button>
-        <button onClick={() => countToNum(5)}>5</button>
-        <button onClick={() => countFromNumber(10)}>10</button>
+        <button onClick={() => countToNum(5)}>0 to 5</button>
+        <button onClick={() => countFromNumber(10)}>10 to 5</button>
       </div>
     </div>
   );
