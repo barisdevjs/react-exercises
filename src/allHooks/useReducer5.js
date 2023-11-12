@@ -1,14 +1,12 @@
 import { useReducer } from 'react';
 
+const formReducer = (state, action) => ({ ...state, ...action });
 
 function UserForm() {
-    const [state, dispatch] = useReducer((state, action) =>
-        ({ ...state, ...action }),
-        {
-            first: 'F',
-            last: 'L'
-        });
-
+  const [state, dispatch] = useReducer(formReducer, {
+    first: 'F',
+    last: 'L'
+  });
 
     return (
         <div>
