@@ -1,14 +1,19 @@
-import { useId } from 'react';
+import React, {useEffect, useRef, useState} from "react";
 
-export default function Form() {
-  const id = useId();
+export default function App() {
+  const [name, setName] = useState('');
+  const renderCount = useRef(1)
+
+  useEffect(() => {
+    renderCount.current = renderCount.current + 1
+    console.log(name)
+    }, [name]);
+
   return (
-    <form>
-      <label htmlFor={id + '-firstName'}>First Name:</label>
-      <input id={id + '-firstName'} type="text" />
-      <hr />
-      <label htmlFor={id + '-lastName'}>Last Name:</label>
-      <input id={id + '-lastName'} type="text" />
-    </form>
-  );
+    <>
+  <input type="text" placeholder="Search" value={name} onChange={ e=> setName(e.target.value)} />
+  <p>My name is {name}</p>
+  <p>I rendered {renderCount.current} times</p>
+    </>
+  )
 }
